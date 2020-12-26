@@ -1,0 +1,102 @@
+****************
+* Bioinformatics - Project 4
+* CS 321-2
+* 5/8/2020
+* Alejandro Macias, Daniel Rao, Elizabeth Rios
+**************** 
+
+OVERVIEW:
+
+The purpose of project four is to convert a given gene bank file into a BTree with each object 
+being a DNA sequence. Once the BTree is created we are able to search for and study the frequency
+of different lengths of subsequences to see if they are random or not. 
+
+The BTree file is a class created to create a BTree with a given degree and key sequence length.
+The BTreeNode file is a class that defines and represents a BTree Node needed for the BTree that 
+contains keys, values and children. The Cache file is a class used to create a new cache. The
+fileReader file is a class used to read in and interpret the needed files for the BTree to break 
+down. The GeneBankCreateBTree file is a class created to create subsequences of a given length and
+sends the sequences to the BTree in a binary sequence. The GeneBankSearch file is a class that 
+reads the sequences in a given query file and searches the BTree to see if there are any matches.
+The Storage file is a class created to represent a file GBK BTree binary file and the TreeObject
+file is a class created to reprsent a tree object. 
+
+
+INCLUDED FILES:
+
+BTree - source file
+BTreeNode - source file
+Cache - source file
+fileReader - source file
+GeneBankCreateBTree - source file (driver)
+GeneBankSearch - source file (driver)
+Storage - source file
+TreeObject - source file
+README - this file
+
+
+BUILDING AND RUNNING:
+
+While in the directory 
+ In your directory that contains all the source files, compile all eight java files:
+  $ javac BTree.java
+  $ javac BTreeNode.java
+  $ javac Cache.java
+  $ javac fileReader.java
+  $ javac GeneBankCreateBTree.java
+  $ javac GeneBankSearch.java
+  $ javac Storage.java
+  $ javac TreeObject.java
+
+ Then run the GeneBankCreateBTree using the given paramters:
+ 	Note: The "sequence length" must be between 1 and 31 (inclusive).
+ 
+  		$java GeneBankCreateBTree <0/1(no/with Cache)> <degree> <gbk file> <sequence length>
+		[<cache size>] [<debug level>
+		
+After the BTree is created, then run GeneBankSearch using the given parameters:
+	
+		$java GeneBankSearch <0/1(no/with Cache)> <btree file> <query file> [<cache size>]
+		[<debug level>]
+	
+  	About the values:
+  		-Degree is the degree of the BTree. If user chooses 0, then program will choose an optial degree.
+  		-Sequence length is a value between one and thirty one (inclusive) that shows the length of the subsequence in the genome.
+  		-BTree file is the file that is constructed by the GeneCreateBTree file. 
+  		-The query file consists of all the DNA subsequences of a specific length that will be searched for in the BTree file. 
+  		
+After this is done, console will then display: 
+	
+
+PROGRAM DESIGN:
+
+The data needed for the Bioinformatic field is very large and has to be stored in a secondary storage rather than a main memory like most data. 
+Therefore, this makes the data for the Bioinformatic field the perfect candidate for being put into a BTree. For the design of this concept and 
+lab, using a given gene bank file, we converted the given data into a BTree with each object being a DNA sequence. We then implemented a class
+that takes in the value "k" and uses it to break the sequence into lengths of k each. For example as described in the lab write up, with the value 
+of k being 3 and the DNA sequence being AATTCGG, then the created subsequences would be AAT, TTC, ATT and TCG. To optimize space and save memory, 4 
+binary numbers were used instead of the values A, C, G and T. The GeneBankCreatBTree file was used to create this BTree from a genebank file. The
+GeneBankSearch class then uses this file to search in the specified BTree sequences for length of k (which is a value between one and thirty one
+put in by the user). 
+
+
+TESTING:
+
+To test the functionality of this project, we found ourselves using print statements throughout the project to check and see what created methods
+were working or why we were occasionally coming up with a null pointer. Could not check for errors and efficiency because of errors in GeneBankSearch.java
+Program kept crashing due to NegativeArrayIndexOutOfBounds. Tried to resolve it using debugging techniques but not sure what the cause behind the issue. Other than that everything else works fine. It is able to generate a Btree file and dump file. The program is also able to manipulate BTree data structure as it adds data into it.
+
+DISCUSSION:
+
+With this being the last project of the semester the concepts were definitely the hardest to wrap our brain around then most. We found ourselves
+going back to the powerpoints quite often, rewatching the lectures, going to tutors and looking up additional videos to help us succeed with this
+project. With this lab being one of the hardest, the affects of Covid-19 also made the work a lot more difficult than usual. With the help of
+Zoom we were luckily able to meet up quite often as a group and work on the project together. However, we found that when we were stuck on a 
+problem, getting help from tutors and others from our class was not as convenient as it usually has been which was a bit of an obstacle for us. 
+
+
+Overall, this project consisted of research and zoom meetings with tutors to figure out the needed solutions to this project. We were a little
+distraught with the problems that Covid-19 caused with learning and completing it, but our knowledge was truly tested and thankfully were successfully
+able to complete the project. 
+
+
