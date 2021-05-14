@@ -1,0 +1,118 @@
+****************
+* Project: P2
+* Class: CS321-02
+* Date: Feb 23, 2020
+* Daniel Rao
+**************** 
+
+OVERVIEW:
+
+In this assignment, I have implemented a priority queue PQueue class using a max-heap and 
+implement a MaxHeap class using an array. Each node in the max-heap contains a process. The
+Process class implements Comparable interface so that the comparison between nodes in max-heap
+can be made by calling compareTo method. To implement the compareTo method, process with
+larger priority level has a higher priority. In case of a tie, process with earlier arrival time should
+be picked.
+
+
+INCLUDED FILES:
+
+The files required for CS321 are: 
+
+ProcessGenerator.java
+Averager.java
+CPUScheduling.java
+MaxHeap.java
+PQueue.java
+Process.java
+README
+
+
+COMPILING AND RUNNING:
+
+The program runs and compiles correctly
+ 
+Compile the class with the given command: 
+
+ $ javac ProcessGenerator.java
+ $ javac Averager.java
+ $ javac CPUScheduling.java
+ $ javac MaxHeap.java
+ $ javac PQueue.java
+ $ javac Process.java
+
+	OR:
+ $ javac *.java
+
+
+Command line arguments were used in Test.java to run the command successfully
+
+Syntax:
+java CPUScheduling <maxProcessTime> <maxPriorityLevel> <timeToIncrementPriority>
+<simulationTime> <processArrivalRate>
+
+where
+• maxProcessTime: largest possible time units required to finish a process. That is,
+any process arrived will require at least 1 time unit and at most maxPriorityLevel time
+units to finish.
+• maxPriorityLevel: highest possible priority in this simulation. That is, a process can
+have a priority, ranging from 1, 2, . . . , maxPriorityLevel.
+• timeToIncrementPriority: if a process didn’t get any CPU time for this timeToIncrementPriority time units, the process’s priority will be increased by one.
+• simulationTime: the total time units for the simulation.
+• processArrivalRate: using this rate to decide whether to generate a new process in
+each time unit.
+
+Console output will give the results after the program finishes.
+
+
+PROGRAM DESIGN AND IMPORTANT CONCEPTS:
+
+
+Project designed into following Classes:
+
+1) CPUScheduling.java: simulates the round robin CPU scheduling algorithm. 
+
+2) Averager.java: keeps track of the number of processes in the simulation and computes the
+average turn around time. 
+
+3) ProcessGenerator.java randomly generates processes with a given probability. At beginning
+of each time unit, whether a process will arrive is decided by the given probability. In addition,
+while generating a new process, both its priority and the required time units to finish the
+process are randomly generated within given ranges.
+
+4) Process.java defines a process. You need to implement the compareTo method in this class.
+Each process has a priority level, time remaining to finish, and arrival time.
+
+5) MaxHeap.java defines a max-heap. Each node in the max-heap contains a process.
+
+6) PQueue.java defines a priority queue using a max-heap.
+
+
+
+TESTING:
+
+The program was tested by compiling all the files that were provided to us in the test folder.
+One of the file was run_test which was run after all the other java files were compiled. 
+The test file was executed using the following syntax: ./run_test <probability>
+The test gave the right output.
+Further on the program was also hard tested using the following numbers from the instructions;
+5 5 5 100 0.4
+
+
+DISCUSSION:
+
+
+Understanding the whole algorithm was kind of challenging. This was a really hard to understand project. 
+One of the most challenging part was understanding how heap works. It seems really easy to do one paper but when it came to programming this was the most hardest thing to implement. 
+Especially with breaking down all the cases. One of the thing was coming up with a way to index my arrayList to 1. This was important for me so that I could use the formulas from the slide notes.
+These are as follows: (for accessing parent node: i/2), (for accessing left child: 2i), (for accessing right child: 2i+1)
+Understanding queue and implementing the Process and ProcessGenerator was hard too. It took me good chunk of time to fix the remaining timenotprocess issue. For a long time I was getting frustrated with the fact that I was getting a negative remaining timenotprocess issue. Turned out that I was decrementing it in another method also. But however by the end of the day I am glad that I was able to work through and fix the bug.
+ 
+ 
+EXTRA CREDIT:
+
+There was no extra credit opportunity provided by the teacher.
+
+
+----------------------------------------------------------------------------
+
